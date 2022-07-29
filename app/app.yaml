@@ -19,7 +19,9 @@ spec:
       - name: api
         image: ergikame/hyra-frontend:apiTest
         ports:
-        - containerPort: 3000
+          - name: http
+            containerPort: 3000
+            protocol: TCP
         env:
           - name: DB_HOST
             value: 'cG9zdGdyZXMtcG9zdGdyZXNxbC5wb3N0Z3Jlcy5zdmMuY2x1c3Rlci5sb2NhbA=='

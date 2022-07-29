@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: api-service
+  namespace: api
 spec:
   selector:
-    app.kubernetes.io/name: MyApp
+    app: api
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 3000
