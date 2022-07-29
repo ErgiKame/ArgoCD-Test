@@ -5,4 +5,5 @@ resources:
   - app-service.yaml
   - app.yaml
   - secrets.yaml
+  - namespace.yaml
   
