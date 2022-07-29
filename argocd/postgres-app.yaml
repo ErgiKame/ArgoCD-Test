@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: 11.6.19
+    helm:
+      parameters:
+        - name: global.postgresql.auth.password
+          value: password
+    chart: postgresql
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: postgres
+  syncPolicy:
+    automated:
+      selfHeal: true
