@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: api
+  labels:
+    app: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: api
+        image: ergikame/hyra-frontend:apiTest
+        ports:
+        - containerPort: 3000
+        env:
+          - name: DB_HOST
+            value: 'cG9zdGdyZXMtcG9zdGdyZXNxbC5wb3N0Z3Jlcy5zdmMuY2x1c3Rlci5sb2NhbA=='
+          - name: DB_PORT
+            value: 'NTQzMg=='
+          - name: DB_USERNAME
+            value: 'cG9zdGdyZXM='
+          - name: DB_PASSWORD
+            value: 'elB6bzRIeUdGTA=='
+          - name: DATABASE
+            value: 'cG9zdGdyZXM='
