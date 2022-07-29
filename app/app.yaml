@@ -24,12 +24,26 @@ spec:
             protocol: TCP
         env:
           - name: DB_HOST
-            value: 'cG9zdGdyZXMtcG9zdGdyZXNxbC5wb3N0Z3Jlcy5zdmMuY2x1c3Rlci5sb2NhbA=='
+            valueFrom:
+              secretKeyRef:
+                key: DB_HOST
           - name: DB_PORT
-            value: 'NTQzMg=='
+            valueFrom:
+              secretKeyRef:
+                key: DB_PORT
           - name: DB_USERNAME
-            value: 'cG9zdGdyZXM='
+            valueFrom:
+              secretKeyRef:
+                key: DB_USERNAME
           - name: DB_PASSWORD
-            value: 'elB6bzRIeUdGTA=='
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
           - name: DATABASE
-            value: 'cG9zdGdyZXM='
+            valueFrom:
+              secretKeyRef:
+                key: DATABASE
+          - name: PORT
+            valueFrom:
+              secretKeyRef:
+                key: PORT
