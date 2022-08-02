@@ -77,6 +77,6 @@ k8s_resource(objects=["postgres:application:argocd"], new_name="Postgres", label
 print("Ingresses")
 print("===============================")
 kustomize_with_helm('./k8s/local/ingresses/')
-k8s_resource(objects=["argo-ingress:Ingress:argocd"], new_name="ArgoCD Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
-k8s_resource(objects=["api-ingress:Ingress:api"], new_name="API Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
+k8s_resource(objects=["argo-ingress:Ingress:argocd"], new_name="ArgoCD Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server', 'ArgoCD-Apps'])
+k8s_resource(objects=["api-ingress:Ingress:api"], new_name="API Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server', 'ArgoCD-Apps'])
 
