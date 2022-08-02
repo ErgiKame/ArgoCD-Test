@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/ErgiKame/ArgoCD-Test'
-    path: app
+    path: api-manifests
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
