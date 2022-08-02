@@ -25,9 +25,9 @@ global:
     ## @param global.postgresql.auth.secretKeys.replicationPasswordKey Name of key in existing secret to use for PostgreSQL credentials (overrides `auth.secretKeys.replicationPasswordKey`). Only used when `global.postgresql.auth.existingSecret` is set.
     ##
     auth:
-      postgresPassword: "nvo11zTFaV"
+      postgresPassword: ""
       username: ""
-      password: "nvo11zTFaV"
+      password: ""
       database: ""
       existingSecret: ""
       secretKeys:
@@ -122,7 +122,7 @@ auth:
   enablePostgresUser: true
   ## @param auth.postgresPassword Password for the "postgres" admin user. Ignored if `auth.existingSecret` with key `postgres-password` is provided
   ##
-  postgresPassword: ""
+  postgresPassword: "nvo11zTFaV"
   ## @param auth.username Name for a custom user to create
   ##
   username: ""

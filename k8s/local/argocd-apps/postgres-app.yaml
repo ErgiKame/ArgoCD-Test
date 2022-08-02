@@ -11,7 +11,7 @@ spec:
     helm:
       parameters:
         - name: global.postgresql.auth.password
-          value: password
+          value: 'GeqxUfxku2'
     chart: postgresql
   destination:
     server: 'https://kubernetes.default.svc'
