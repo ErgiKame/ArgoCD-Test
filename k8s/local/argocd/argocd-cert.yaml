@@ -1,0 +1,29 @@
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: argocd-certs
+#   namespace: argocd
+# spec:
+#   dnsNames:
+#     - nginx.cluster.local
+#   secretName: argocd-tls
+#   issuerRef:
+#     name: letsencrypt-cluster-issuer
+#     kind: ClusterIssuer
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-ca-argo
+  namespace: argocd
+spec:
+  isCA: true
+  commonName: my-selfsigned-ca
+  secretName: argo-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
