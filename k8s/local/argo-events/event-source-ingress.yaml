@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  name: argo-event-source-ingress
+  namespace: argo-events
+spec:
+  tls:
+    - hosts:
+        - "eventsource.cluster.local"
+      secretName: eventsource-tls
+  rules:
+    - host: "eventsource.cluster.local"
+      http:
+        paths:
+          - path: /(eventsource\/.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: webhook-eventsource-svc
+                port:
+                  number: 12000
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: webhook-eventsource-svc
+                port:
+                  number: 12000

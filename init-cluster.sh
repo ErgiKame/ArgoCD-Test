@@ -44,6 +44,8 @@ nodes:
     hostPort: 80
   - containerPort: 443
     hostPort: 443
+  - containerPort: 12000
+    hostPort: 12000
 EOF
 
 export connected="$(docker network connect "kind" "${CLUSTER_REGISTRY}" 2>/dev/null)"
