@@ -63,6 +63,12 @@ k8s_resource(workload="argocd-applicationset-controller", new_name="ArgoCD Appli
 k8s_resource(workload="argocd-application-controller", new_name="ArgoCD Application Controller", labels=['ArgoCD'])
 k8s_resource(objects=["argo-ingress:Ingress:argocd"], new_name="ArgoCD Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller'], pod_readiness='wait')
 
+print("Argo Events")
+print("===============================")
+kustomize_with_helm('./k8s/local/argo-events/')
+k8s_resource(workload="controller-manager", new_name="ArgoEvents", labels=['ArgoEvents'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
+k8s_resource(objects=["event-bus:EventBus:argo-events"], new_name="ArgoEventBus", labels=['ArgoEvents'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server', 'ArgoEvents'])
+
 print("Argo Apps")
 print("===============================")
 kustomize_with_helm('./k8s/local/argocd-apps/')
