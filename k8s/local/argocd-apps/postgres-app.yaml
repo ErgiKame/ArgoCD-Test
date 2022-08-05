@@ -4,7 +4,7 @@ metadata:
   name: postgres
   namespace: argocd
 spec:
-  project: default
+  project: local
   source:
     repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 11.6.19

@@ -4,7 +4,7 @@ metadata:
   name: api
   namespace: argocd
 spec:
-  project: default
+  project: local
   source:
     repoURL: 'https://github.com/ErgiKame/ArgoCD-Test'
     path: api-manifests

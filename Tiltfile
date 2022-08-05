@@ -51,12 +51,6 @@ k8s_resource(workload="cert-manager", new_name="Cert Manager", labels=['Cert-Man
 k8s_resource(workload="cert-manager-cainjector", new_name="CA Injector", labels=['Cert-Manager'])
 k8s_resource(workload="cert-manager-webhook", new_name="Webhook", labels=['Cert-Manager'], pod_readiness='wait')
 
-# print("Postgres")
-# print("===============================")
-# kustomize_with_helm('./k8s/local/postgres/')
-# k8s_resource(workload="postgresql", new_name="Postgresql", labels=['Postgresql'])
-# k8s_resource(workload="postgres-postgresql", new_name="Postgres Postgresql", labels=['Postgresql'])
-
 print("Argo CD")
 print("===============================")
 kustomize_with_helm('./k8s/local/argocd/')
@@ -72,12 +66,6 @@ k8s_resource(objects=["argo-ingress:Ingress:argocd"], new_name="ArgoCD Ingress",
 print("Argo Apps")
 print("===============================")
 kustomize_with_helm('./k8s/local/argocd-apps/')
-k8s_resource(objects=["api:application:argocd"], new_name="API", labels=['ArgoCD-Apps'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
-k8s_resource(objects=["postgres:application:argocd"], new_name="Postgres", labels=['ArgoCD-Apps'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
-
-# print("Ingresses")
-# print("===============================")
-# kustomize_with_helm('./k8s/local/ingresses/')
-# k8s_resource(objects=["argo-ingress:Ingress:argocd"], new_name="ArgoCD Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller'], pod_readiness='wait')
-# k8s_resource(objects=["api-ingress:Ingress:ingress-nginx"], new_name="API Ingress", labels=['Ingresses'], resource_deps=['Ingress Nginx Controller'], pod_readiness='wait')
-
+k8s_resource(objects=["local:AppProject:argocd"], new_name="Project", labels=['ArgoCD-Apps'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
+k8s_resource(objects=["api:Application:argocd"], new_name="API", labels=['ArgoCD-Apps'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
+k8s_resource(objects=["postgres:Application:argocd"], new_name="Postgres", labels=['ArgoCD-Apps'], resource_deps=['Ingress Nginx Controller', 'ArgoCD Server'])
